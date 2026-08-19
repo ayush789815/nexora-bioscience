@@ -50,7 +50,12 @@ export function About() {
 
         {/* Circular system — desktop */}
         <div data-reveal className="hidden justify-center md:flex">
-          <svg viewBox="0 0 400 400" className="w-full max-w-md" aria-hidden="true">
+          <svg
+            viewBox="0 0 400 400"
+            className="w-full max-w-md"
+            role="group"
+            aria-label="Interactive research loop diagram"
+          >
             <circle cx={cx} cy={cy} r={radius} fill="none" stroke="rgba(244,247,242,0.1)" strokeDasharray="3 6" />
             <circle cx={cx} cy={cy} r={radius - 46} fill="none" stroke="rgba(143,227,194,0.12)" />
             {SYSTEM_STAGES.map((stage, i) => {
@@ -78,8 +83,12 @@ export function About() {
                     r={isActive ? 30 : 22}
                     fill={isActive ? 'rgba(184,255,101,0.12)' : 'rgba(11,23,20,0.9)'}
                     stroke={isActive ? '#B8FF65' : 'rgba(143,227,194,0.4)'}
-                    className="cursor-pointer transition-all duration-500"
+                    className="cursor-pointer transition-all duration-500 focus:outline-none"
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`${stage.label}: ${stage.detail}`}
                     onMouseEnter={() => setActiveStage(i)}
+                    onFocus={() => setActiveStage(i)}
                   />
                   <text
                     x={x}
