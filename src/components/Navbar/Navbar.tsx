@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { NAV_LINKS } from '../../data/content'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
@@ -102,8 +103,9 @@ export function Navbar() {
         </button>
       </nav>
 
-      <AnimatePresence>
-        {open && (
+      {createPortal(
+        <AnimatePresence>
+          {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -145,8 +147,10 @@ export function Navbar() {
               </motion.li>
             </ul>
           </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
     </header>
   )
 }

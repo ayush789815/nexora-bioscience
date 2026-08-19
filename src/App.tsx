@@ -2,6 +2,7 @@ import { Navbar } from './components/Navbar/Navbar'
 import { Hero } from './components/Hero/Hero'
 import { About } from './components/About/About'
 import { Technology } from './components/Technology/Technology'
+import { Molecule3D } from './components/Molecule3D/Molecule3D'
 import { Capabilities } from './components/Capabilities/Capabilities'
 import { ScrollStory } from './components/ScrollStory/ScrollStory'
 import { Impact } from './components/Impact/Impact'
@@ -27,6 +28,7 @@ export default function App() {
         <Hero />
         <About />
         <Technology />
+        <Molecule3D />
         <Capabilities />
         <ScrollStory />
         <Impact />

@@ -13,10 +13,11 @@ assessment demonstrating visual design, motion design, and modern frontend engin
 - **Tailwind CSS 4** (CSS-first `@theme` configuration)
 - **GSAP 3** + **ScrollTrigger** (load timelines, scroll reveals, pinned scroll story, count-ups)
 - **Framer Motion** (mobile navigation transitions)
+- **Three.js + react-three-fiber** (lazy-loaded 3D molecular model section)
 - **Lucide React** (icons)
 
-No Three.js: all scientific visuals are procedural Canvas 2D and SVG for performance
-(GPU-friendly, no WebGL dependency, graceful degradation everywhere).
+Most scientific visuals are procedural Canvas 2D and SVG for performance; the single WebGL
+section (the 3D double helix) is code-split and only loads when scrolled near the viewport.
 
 ## Features
 
@@ -29,6 +30,9 @@ No Three.js: all scientific visuals are procedural Canvas 2D and SVG for perform
   Computation → Discovery → Impact); converts to a vertical stacked interactive system on mobile.
 - **Technology** — four hover-reactive cards with micro-interactions and an animated
   molecular-signal dashboard (fictional, clearly labeled conceptual data).
+- **Molecular model** — lazy-loaded react-three-fiber scene: a procedural DNA double helix
+  assembled from scattered instanced spheres as you scroll, with pointer-parallax inspection.
+  No imported 3D assets — pure geometry and light.
 - **Capabilities** — interactive index list with hover expansion.
 - **Scroll story** — GSAP ScrollTrigger pinned section: scattered molecules connect, sprout data
   readouts, organize into a structured grid, and resolve into
@@ -49,6 +53,7 @@ No Three.js: all scientific visuals are procedural Canvas 2D and SVG for perform
 | Scroll story | ScrollTrigger (pin + scrub) | Progress drives interpolation between scattered/connected/structured states |
 | Count-ups | GSAP tween on plain object | Runs once when stats enter viewport |
 | Mobile menu | Framer Motion | AnimatePresence mount/unmount with sequential item reveal |
+| 3D helix assembly | react-three-fiber `useFrame` | Scroll progress lerps instanced nodes from scattered positions into the helix; pointer drives parallax |
 | Micro-interactions | CSS transitions | Hover states, underline reveals, card translations |
 | Custom cursor | `gsap.quickTo` | Low-latency dot + eased trailing ring |
 
